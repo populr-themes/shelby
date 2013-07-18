@@ -1,0 +1,311 @@
+@import 'variables';
+@import '//populr.me/assets/developers/populr_mixins.less';
+@import 'preboot';
+
+#reset > .global-reset();
+
+/* TYPOGRAPHY DEFAULTS */
+
+@text-color: #333;
+@link-color: @accent-color;
+
+// Title text defaults
+// @headline-font-family is defined in variables.less
+@headline-font-size: 24px;
+@headline-line-height: 1.2;
+
+.headline-text() {
+  font-family: @headline-font-family;
+  font-size: @headline-font-size;
+  line-height: @headline-line-height;
+  font-weight: 600;
+}
+
+.pop-title-text() {
+  font-family: @headline-font-family;
+  font-size: 60px;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+// Body text defaults
+@body-font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+@body-font-size: 14px;
+@body-line-height: 1.5;
+
+.body-text() {
+  font-family: @body-font-family;
+  font-size: @body-font-size;
+  line-height: @body-line-height;
+}
+
+/* END TYPOGRAPHY DEFAULTS */
+
+
+/* STRUCTURE */
+
+#pop {
+  margin: 0 auto;
+  color: @text-color;
+  i, em { font-style: italic; }
+  b, strong { font-weight: 700; }
+
+  #main-region a, #pop-title a {
+    color: @link-color;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+    &:active { color: lighten(@link-color, 20%); }
+  }
+  #footer-region a {
+    color: #fff;
+    &:hover { color: mix(@accent-color, @white, 20%); }    
+  }
+}
+
+#main-content {
+  border-top: 4px solid @accent-color;
+  padding-top: 20px;
+}
+
+#pop-logo {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+#pop-title {
+  .pop-title-text();
+  p { .pop-title-text(); }
+  text-align: center;
+  max-width: 700px;
+  margin: 50px auto;
+  // padding-bottom: 20px;
+}
+
+// Columnizer rows & columns
+.columnizer-row {
+  max-width: 700px;
+  margin: 0 auto 60px;
+  padding: 0 10px;
+  &:last-child { margin-bottom: 0; }
+}
+
+.columnizer-cols2 .columnizer-col {
+  width: 340px;
+  margin-left: 20px;
+}
+
+.columnizer-cols3 .columnizer-col {
+  width: 220px;
+  margin-left: 20px;
+}
+
+// .columnizer-row-contents-imagegroup-imagegroup-imagegroup {
+//   .slide {
+//     min-height: 128px;
+//     overflow: hidden;
+//   }
+// }
+
+// Assets
+.asset-title {
+  .headline-text();
+  p { .headline-text(); }
+
+  padding: 10px 0;
+  border-bottom: 1px solid #bbb;
+  #footer-region & { border-bottom: 1px solid #fff; }
+}
+
+.description, .body {
+  .body-text();
+  p, li { .body-text(); }
+
+  margin: 10px 0;
+  ul, ol {
+    margin: .5em 0;
+    list-style-position: inside;
+  }
+  ul li { list-style-type: disc; }
+  ol li { list-style-type: decimal; }
+}
+
+.content { margin: 10px 0; }
+
+// Image assets
+#populr > #image-slider-themes > .basic();
+.populr-image-slider, .content .embed {
+  border: 8px solid #fff;
+  position: relative;
+  z-index: 101;
+}
+.content {
+  position: relative;
+  z-index: 100;
+  background-color: #fff;
+  &:before {
+    content: ' ';
+    position: absolute;
+    z-index: 99;
+  }
+}
+.asset-size-1 .content:before {
+  width: 788px;
+  height: 113px;
+  left: -44px;
+  bottom: -33px;
+  background: transparent url('@{base-url}/images/shadow_size1.png') no-repeat bottom left;
+}
+.asset-size-2 .content:before {
+  width: 388px;
+  height: 115px;
+  left: -24px;
+  bottom: -33px;
+  background: transparent url('@{base-url}/images/shadow_size2.png') no-repeat bottom left;
+}
+.asset-size-3 .content:before {
+  width: 248px;
+  height: 104px;
+  left: -14px;
+  bottom: -30px;
+  background: transparent url('@{base-url}/images/shadow_size3.png') no-repeat bottom left;
+}
+
+.asset-type-imagegroup img {
+  display: block;
+}
+  
+.slide:before {
+  opacity: 0;
+  display: block;
+  position: absolute;
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.6) url("@{base-url}/images/magnifying_glass.png") no-repeat center center;
+  pointer-events: none;
+}
+.slide:hover:before {
+  opacity: 1;
+  .transition(opacity 0.4s);
+}
+
+// Document assets
+.documents {
+  margin: 10px auto;
+  padding-left: 0;
+  text-align: center;
+
+  li {
+    list-style: none;
+    .clearfix();
+    margin: 15px 10px 15px 0;
+    text-align: center;
+    display: inline-block;
+    width: 220px;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    a {
+      display: block;
+      min-height: 102px;
+      text-align: left;
+      text-decoration: none;
+      .extension {
+        margin: 0 10px 0 0;
+        background: transparent url('@{base-url}/images/file_icon.png') no-repeat top left;
+        float: left;
+        width: 77px;
+        height: 102px;
+        overflow: hidden;
+        line-height: 0;
+      }
+    }
+    .document-info {
+      display: table-cell;
+      vertical-align: middle;
+      height: 88px;
+      line-height: 1.4;
+    }
+    .document-title {
+      font-weight: 600;
+    }
+  }
+}
+.asset-size-2 .documents li { width: 340px; }
+
+// Region-specific styling
+#main-region { padding-bottom: 50px; }
+
+#footer-region {
+  // .footer-color() when(luma(@custom-color) > 75%) {
+  //   color: #333;
+  //   .asset-title { border-bottom: 1px solid #999; }
+  // }
+  // .footer-color() when(luma(@custom-color) =< 75%) {
+  //   color: #fff;
+  //   .asset-title { border-bottom: 1px solid #fff; }
+  // }
+  // .footer-color();
+  color: #fff;
+}
+
+#footer-wrapper {
+  background: @accent-color url('@{base-url}/images/page_glow.png') no-repeat top center;
+  border-top: 3px solid @accent-color;
+  padding: 50px 0 60px;
+}
+
+.has-sharing, .has-links {
+  #footer-region .columnizer-row:last-child { padding-bottom: 40px; }
+}
+
+// Clearfix
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+///////////////////////////////////////////////////////
+/* MOBILE
+The Populr mobile reset will handle some of the basics of 
+mobilizing your theme, such as stacking all of the assets 
+vertically. However, you'll have to fine tune the styling 
+to make your theme look really good on mobile devices. */
+@media screen and (max-width: 720px) {
+  #populr > .mobile-reset();
+
+  .columnizer-row {
+    width: auto !important;
+    margin: 20px auto !important;
+    padding: 0 20px !important;
+  }
+
+  .asset-title {
+    font-size: 24px !important;
+    text-align: left !important;
+  }
+
+  .description, .body {
+    font-size: 14px !important;
+    text-align: left !important;
+    p, li {
+      font-size: 14px !important;
+      text-align: left !important;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #pop-title { font-size: 32px !important; }
+
+  .asset-title { font-size: 20px !important; }
+}
