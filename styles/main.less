@@ -6,8 +6,34 @@
 
 /* TYPOGRAPHY DEFAULTS */
 
-@text-color: #333;
-@link-color: @accent-color;
+// Mixin for setting text color based on another color, such as a background color
+.text-colors (@text-background) when (luma(@text-background) > 75%) {
+  color: #333;
+}
+.text-colors (@text-background) when (luma(@text-background) =< 75%) {
+  color: #fff;
+}
+
+// Mixin for setting link colors based on accent color and background color
+.link-colors (@text-background) when (luma(@accent-color) > 75%) {
+  color: darken(saturate(@accent-color, 50%), 50%);
+  &:active { color: darken(saturate(@accent-color, 50%), 20%); }
+}
+.link-colors (@text-background) when (luma(@accent-color) =< 75%) and (luma(@text-background) > 75%) {
+  color: @accent-color;
+  &:active { color: lighten(@accent-color, 20%); }  
+}
+.link-colors (@text-background) when (luma(@accent-color) =< 75%) and (luma(@text-background) =< 75%) {
+  color: #fff;
+  &:active { color: mix(@accent-color, @white, 20%); }
+}
+
+.horiz-rule-color (@bgcolor) when (luma(@bgcolor) > 75%) {
+  border-bottom: 1px solid #aaa;
+}
+.horiz-rule-color (@bgcolor) when (luma(@bgcolor) =< 75%) {
+  border-bottom: 1px solid #fff;
+}
 
 // Title text defaults
 // @headline-font-family is defined in variables.less
@@ -46,20 +72,13 @@
 
 #pop {
   margin: 0 auto;
-  color: @text-color;
   i, em { font-style: italic; }
   b, strong { font-weight: 700; }
 
-  #main-region a, #pop-title a {
-    color: @link-color;
-    text-decoration: none;
-    &:hover { text-decoration: underline; }
-    &:active { color: lighten(@link-color, 20%); }
-  }
-  #footer-region a {
-    color: #fff;
-    &:hover { color: mix(@accent-color, @white, 20%); }    
-  }
+  .text-colors(@background-color);
+
+  #main-region a, #pop-title a { .link-colors(@background-color); }
+  #footer-region a { .link-colors(@accent-color); }
 }
 
 #main-content {
@@ -114,7 +133,7 @@
 
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
-  #footer-region & { border-bottom: 1px solid #fff; }
+  #footer-region & { .horiz-rule-color(@accent-color); }
 }
 
 .description, .body {
@@ -149,26 +168,28 @@
     z-index: 99;
   }
 }
-.asset-size-1 .content:before {
-  width: 788px;
-  height: 113px;
-  left: -44px;
-  bottom: -33px;
-  background: transparent url('@{base-url}/images/shadow_size1.png') no-repeat bottom left;
-}
-.asset-size-2 .content:before {
-  width: 388px;
-  height: 115px;
-  left: -24px;
-  bottom: -33px;
-  background: transparent url('@{base-url}/images/shadow_size2.png') no-repeat bottom left;
-}
-.asset-size-3 .content:before {
-  width: 248px;
-  height: 104px;
-  left: -14px;
-  bottom: -30px;
-  background: transparent url('@{base-url}/images/shadow_size3.png') no-repeat bottom left;
+.drop-shadow {
+  background-size: contain;
+  z-index: 100;
+  content: ' ';
+  .asset-size-1 & {
+    width: 788px;
+    height: 113px;
+    margin: -90px -44px -23px;
+    background: transparent url('@{base-url}/images/shadow_size1.png') no-repeat center center;
+  }
+  .asset-size-2 & {
+    width: 388px;
+    height: 115px;
+    margin: -92px -24px -23px;
+    background: transparent url('@{base-url}/images/shadow_size2.png') no-repeat center center;
+  }
+  .asset-size-3 & {
+    width: 248px;
+    height: 104px;
+    margin: -84px -14px -20px;
+    background: transparent url('@{base-url}/images/shadow_size3.png') no-repeat center center;
+  }
 }
 
 .asset-type-imagegroup img {
@@ -228,9 +249,6 @@
       vertical-align: middle;
       line-height: 1.4;
       height: 88px;
-      // max-height:88px;
-      // height:auto !important;
-      // height:88px;
       overflow:hidden;
       text-overflow: ellipsis;
     }
@@ -242,12 +260,10 @@
 .asset-size-2 .documents li { width: 340px; }
 .asset-size-1, .asset-size-3 {
   .documents li .document-info {
-    // width: 133px;
     max-width: 133px;
   }
 }
 .asset-size-2 .documents li .document-info {
-  // width: 253px;
   max-width: 253px;
 }
 
@@ -260,16 +276,7 @@
 #main-region { padding-bottom: 50px; }
 
 #footer-region {
-  // .footer-color() when(luma(@custom-color) > 75%) {
-  //   color: #333;
-  //   .asset-title { border-bottom: 1px solid #999; }
-  // }
-  // .footer-color() when(luma(@custom-color) =< 75%) {
-  //   color: #fff;
-  //   .asset-title { border-bottom: 1px solid #fff; }
-  // }
-  // .footer-color();
-  color: #fff;
+  .text-colors(@accent-color);
 }
 
 #footer-wrapper {
