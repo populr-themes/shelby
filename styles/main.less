@@ -79,7 +79,7 @@
   text-align: center;
   max-width: 700px;
   margin: 50px auto;
-  // padding-bottom: 20px;
+  .ie7 & { padding-bottom: 20px; }
 }
 
 // Columnizer rows & columns
@@ -226,8 +226,13 @@
     .document-info {
       display: table-cell;
       vertical-align: middle;
-      height: 88px;
       line-height: 1.4;
+      height: 88px;
+      // max-height:88px;
+      // height:auto !important;
+      // height:88px;
+      overflow:hidden;
+      text-overflow: ellipsis;
     }
     .document-title {
       font-weight: 600;
@@ -235,6 +240,21 @@
   }
 }
 .asset-size-2 .documents li { width: 340px; }
+.asset-size-1, .asset-size-3 {
+  .documents li .document-info {
+    // width: 133px;
+    max-width: 133px;
+  }
+}
+.asset-size-2 .documents li .document-info {
+  // width: 253px;
+  max-width: 253px;
+}
+
+.lt-ie9 .documents li {
+  display: block;
+  float: left;
+}
 
 // Region-specific styling
 #main-region { padding-bottom: 50px; }
@@ -308,4 +328,8 @@ to make your theme look really good on mobile devices. */
   #pop-title { font-size: 32px !important; }
 
   .asset-title { font-size: 20px !important; }
+}
+
+@media screen and (max-width: 380px) {
+  .asset-size-2 .documents li { width: 100% !important; } 
 }
