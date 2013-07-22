@@ -1,6 +1,7 @@
 @import 'variables';
 @import '//populr.me/assets/developers/populr_mixins.less';
 @import 'preboot';
+@import 'palette-default';
 
 #reset > .global-reset();
 
@@ -310,6 +311,11 @@ to make your theme look really good on mobile devices. */
 @media screen and (max-width: 720px) {
   #populr > .mobile-reset();
 
+  #pop-title {
+    font-size: 48px !important;
+    p { font-size: 48px !important; }
+  }
+
   .columnizer-row {
     width: auto !important;
     margin: 20px auto !important;
@@ -329,12 +335,29 @@ to make your theme look really good on mobile devices. */
       text-align: left !important;
     }
   }
+
+  .drop-shadow {
+    width: 110% !important;
+    margin-left: -5% !important;
+    margin-right: -5% !important;
+    background: transparent url('@{base-url}/images/shadow_size1.png') no-repeat center center !important;
+    background-size: contain !important;
+  }
 }
 
 @media screen and (max-width: 600px) {
-  #pop-title { font-size: 32px !important; }
+  #main-content { padding-top: 0 !important; }
+
+  #pop-title {
+    font-size: 32px !important;
+    p { font-size: 32px !important; }
+  }
 
   .asset-title { font-size: 20px !important; }
+
+  .drop-shadow { display: none !important; }
+
+  .content { .box-shadow(0 3px 5px rgba(0,0,0,.35)); }
 }
 
 @media screen and (max-width: 380px) {
