@@ -5,6 +5,10 @@
 
 #reset > .global-reset();
 
+// #populr > .link-button();
+// #populr > .icon();
+// #populr > .inline-logo-title();
+
 /* TYPOGRAPHY DEFAULTS */
 
 // Mixin for setting text color based on another color, such as a background color
@@ -13,6 +17,7 @@
 }
 .text-colors (@text-background) when (luma(@text-background) =< 75%) {
   color: #fff;
+  text-shadow: 1px 1px rgba(0,0,0,.25);
 }
 
 // Mixin for setting link colors based on accent color and background color
@@ -160,11 +165,16 @@
 
   margin: 10px 0;
   ul, ol {
-    margin: .5em 0;
-    list-style-position: inside;
+    margin: .5em 0 .5em 20px;
+    // list-style-position: inside;
   }
   ul li { list-style-type: disc; }
   ol li { list-style-type: decimal; }
+}
+.ie7 {
+  .description, .body {
+    ul, ol { margin-left: 25px }
+  }  
 }
 
 .content {
@@ -245,6 +255,15 @@
   .transition(opacity 0.4s);
 }
 
+.asset-type-imagegroup, .asset-type-embedgroup {
+  &.asset-size-1, &.asset-size-2 {
+    .asset-title {
+      border-bottom: none !important;
+      padding-bottom: 0;
+    }
+  }
+}
+
 // Document assets
 .documents {
   margin: 10px auto;
@@ -297,14 +316,12 @@
 .asset-size-2 .documents li .document-info {
   max-width: 253px;
 }
-.ie8, .ie9 {
-  .asset-size-1, .asset-size-3 {
+.lt-ie10 {
+  .asset-size-1, .asset-size-2, .asset-size-3 {
     .documents li .document-info {
-      width: 133px;
+      display: block;
+      height: auto;
     }
-  }
-  .asset-size-2 .documents li .document-info {
-    width: 253px;
   }
 }
 

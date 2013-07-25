@@ -70,20 +70,20 @@
       {{/asset}}
 
       {{#asset "imagegroup" size="1"}}
+        {{{title}}}
         <div class="content">
           {{{imageslider images width="684" height="356"}}}
         </div>
         <div class="drop-shadow" />
-        {{{title}}}
         {{{description}}}
       {{/asset}}
  
       {{#asset "imagegroup" size="2"}}
+        {{{title}}}
         <div class="content">
           {{{imageslider images width="324" height="187"}}}
         </div>
         <div class="drop-shadow" />
-        {{{title}}}
         {{{description}}}
       {{/asset}}
   
@@ -132,7 +132,8 @@
         </ul>
       {{/asset}}
  
-      {{#asset "embedgroup" size="1" width="700"}}
+      {{#asset "embedgroup" size="1" width="684"}}
+        {{{title}}}
         {{#embeds}}
           {{#if_equal kind "video"}}
             <div class="content"><div class="embed">{{{html}}}</div></div><div class="drop-shadow" />
@@ -140,11 +141,11 @@
             <div class="embed">{{{html}}}</div>
           {{/if_equal}}
         {{/embeds}}
-        {{{title}}}
         {{{description}}}
       {{/asset}}
 
-      {{#asset "embedgroup" size="2" width="340"}}
+      {{#asset "embedgroup" size="2" width="324"}}
+        {{{title}}}
         {{#embeds}}
           {{#if_equal kind "video"}}
             <div class="content"><div class="embed">{{{html}}}</div></div><div class="drop-shadow" />
@@ -152,11 +153,10 @@
             <div class="embed">{{{html}}}</div>
           {{/if_equal}}
         {{/embeds}}
-        {{{title}}}
         {{{description}}}
       {{/asset}}
 
-      {{#asset "embedgroup" size="3" width="220"}}
+      {{#asset "embedgroup" size="3" width="204"}}
         {{#embeds}}
           {{#if_equal kind "video"}}
             <div class="content"><div class="embed">{{{html}}}</div></div><div class="drop-shadow" />
@@ -190,20 +190,20 @@
         {{/asset}}
 
         {{#asset "imagegroup" size="1"}}
+          {{{title}}}
           <div class="content">
             {{{imageslider images width="684" height="356"}}}
           </div>
           <div class="drop-shadow" />
-          {{{title}}}
           {{{description}}}
         {{/asset}}
    
         {{#asset "imagegroup" size="2"}}
+          {{{title}}}
           <div class="content">
             {{{imageslider images width="324" height="187"}}}
           </div>
           <div class="drop-shadow" />
-          {{{title}}}
           {{{description}}}
         {{/asset}}
     
@@ -252,7 +252,8 @@
           </ul>
         {{/asset}}
    
-        {{#asset "embedgroup" size="1" width="700"}}
+        {{#asset "embedgroup" size="1" width="684"}}
+          {{{title}}}
           {{#embeds}}
             {{#if_equal kind "video"}}
               <div class="content"><div class="embed">{{{html}}}</div></div><div class="drop-shadow" />
@@ -260,11 +261,11 @@
               <div class="embed">{{{html}}}</div>
             {{/if_equal}}
           {{/embeds}}
-          {{{title}}}
           {{{description}}}
         {{/asset}}
 
-        {{#asset "embedgroup" size="2" width="340"}}
+        {{#asset "embedgroup" size="2" width="324"}}
+          {{{title}}}
           {{#embeds}}
             {{#if_equal kind "video"}}
               <div class="content"><div class="embed">{{{html}}}</div></div><div class="drop-shadow" />
@@ -272,11 +273,10 @@
               <div class="embed">{{{html}}}</div>
             {{/if_equal}}
           {{/embeds}}
-          {{{title}}}
           {{{description}}}
         {{/asset}}
 
-        {{#asset "embedgroup" size="3" width="220"}}
+        {{#asset "embedgroup" size="3" width="204"}}
           {{#embeds}}
             {{#if_equal kind "video"}}
               <div class="content"><div class="embed">{{{html}}}</div></div><div class="drop-shadow" />
