@@ -1,7 +1,6 @@
 @import 'variables';
 @import '//populr.me/assets/developers/populr_mixins.less';
 @import 'preboot';
-@import 'palette-default';
 
 #reset > .global-reset();
 
@@ -20,17 +19,17 @@
 }
 
 // Mixin for setting link colors based on accent color and background color
-.link-colors (@text-background) when (luma(@accent-color) > 75%) {
-  color: darken(saturate(@accent-color, 50%), 50%);
-  &:active { color: darken(saturate(@accent-color, 50%), 20%); }
+.link-colors (@text-background) when (luma(@custom-color) > 75%) {
+  color: darken(saturate(@custom-color, 50%), 50%);
+  &:active { color: darken(saturate(@custom-color, 50%), 20%); }
 }
-.link-colors (@text-background) when (luma(@accent-color) =< 75%) and (luma(@text-background) > 75%) {
-  color: @accent-color;
-  &:active { color: lighten(@accent-color, 20%); }  
+.link-colors (@text-background) when (luma(@custom-color) =< 75%) and (luma(@text-background) > 75%) {
+  color: @custom-color;
+  &:active { color: lighten(@custom-color, 20%); }  
 }
-.link-colors (@text-background) when (luma(@accent-color) =< 75%) and (luma(@text-background) =< 75%) {
+.link-colors (@text-background) when (luma(@custom-color) =< 75%) and (luma(@text-background) =< 75%) {
   color: #fff;
-  &:active { color: mix(@accent-color, @white, 20%); }
+  &:active { color: mix(@custom-color, @white, 20%); }
 }
 
 .horiz-rule-color (@bgcolor) when (luma(@bgcolor) > 75%) {
@@ -83,11 +82,11 @@
   .text-colors(@background-color);
 
   #main-region a, #pop-title a { .link-colors(@background-color); }
-  #footer-region a { .link-colors(@accent-color); }
+  #footer-region a { .link-colors(@custom-color); }
 }
 
 #main-content {
-  border-top: 4px solid @accent-color;
+  border-top: 4px solid @custom-color;
   padding-top: 20px;
 }
 
@@ -109,11 +108,6 @@
 // Columnizer rows & columns
 .columnizer-row {
   max-width: 700px;
-  // .lt-ie9 & {
-  //   max-width: 800px;
-  //   width: auto !important;
-  //   width: 800px;
-  // }
   margin: 0 auto 60px;
   padding: 0 10px;
   &:last-child { margin-bottom: 0; }
@@ -127,19 +121,7 @@
 .columnizer-cols3 .columnizer-col {
   width: 220px;
   margin-left: 20px;
-  // position: relative;
-  // &:first-child { padding-left: 0; }
-  // background-color: #f00;
-  // zoom: 1;
-  // .lt-ie9 & { margin-left: 30px; }
 }
-
-// .columnizer-row-contents-imagegroup-imagegroup-imagegroup {
-//   .slide {
-//     min-height: 128px;
-//     overflow: hidden;
-//   }
-// }
 
 // Assets
 .lt-ie9 .columnizer-col {
@@ -155,7 +137,7 @@
 
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
-  #footer-region & { .horiz-rule-color(@accent-color); }
+  #footer-region & { .horiz-rule-color(@custom-color); }
 }
 
 .description, .body {
@@ -336,12 +318,12 @@
 #main-region { padding-bottom: 50px; }
 
 #footer-region {
-  .text-colors(@accent-color);
+  .text-colors(@custom-color);
 }
 
 #footer-wrapper {
-  background: @accent-color url('@{base-url}/images/page_glow.png') no-repeat top center;
-  border-top: 3px solid @accent-color;
+  background: @custom-color url('@{base-url}/images/page_glow.png') no-repeat top center;
+  border-top: 3px solid @custom-color;
   padding: 50px 0 60px;
 }
 
