@@ -4,8 +4,8 @@
 
 #reset > .global-reset();
 
-#populr > .link-button();
-#populr > .icon();
+#populr > .link-button(@custom-color);
+#populr > .icon(@custom-color);
 
 /* TYPOGRAPHY DEFAULTS */
 
@@ -319,6 +319,8 @@
 
 #footer-region {
   .text-colors(@custom-color);
+  #populr > .link-button(@alt-custom-color);
+  #populr > .icon(@alt-custom-color);
 }
 
 #footer-wrapper {
