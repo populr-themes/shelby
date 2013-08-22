@@ -220,9 +220,8 @@
 .asset-type-imagegroup img {
   display: block;
 }
-  
-.slide:before {
-  opacity: 0;
+
+.slide a.overlay {
   display: block;
   position: absolute;
   content: ' ';
@@ -231,12 +230,12 @@
   top: 0;
   left: 0;
   z-index: 1000;
+  opacity: 0;
   background: rgba(0,0,0,0.6) url("@{base-url}/images/magnifying_glass.png") no-repeat center center;
-  pointer-events: none;
-}
-.slide:hover:before {
-  opacity: 1;
-  .transition(opacity 0.4s);
+  &:hover {
+    opacity: 1;
+    .transition(opacity 0.4s);
+  }
 }
 
 .asset-type-imagegroup, .asset-type-embedgroup {
