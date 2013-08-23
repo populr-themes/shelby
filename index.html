@@ -56,16 +56,25 @@
 
       {{#asset "text" size="1"}}
         {{{title}}}
+        {{#if_and title_visible body_visible}}
+          <div class="h-rule" />
+        {{/if_and}}
         {{{body}}}
       {{/asset}}
 
       {{#asset "text" size="2"}}
         {{{title}}}
+        {{#if_and title_visible body_visible}}
+          <div class="h-rule" />
+        {{/if_and}}
         {{{body}}}
       {{/asset}}
 
       {{#asset "text" size="3"}}
         {{{title}}}
+        {{#if_and title_visible body_visible}}
+          <div class="h-rule" />
+        {{/if_and}}
         {{{body}}}
       {{/asset}}
 
@@ -98,6 +107,9 @@
   
       {{#asset "documentgroup" size="1"}}
         {{{title}}}
+        {{#if_and title_visible description_visible}}
+          <div class="h-rule" />
+        {{/if_and}}
         {{{description}}}
         <ul class="documents">
           {{#documents}}
@@ -110,6 +122,9 @@
  
       {{#asset "documentgroup" size="2"}}
         {{{title}}}
+        {{#if_and title_visible description_visible}}
+          <div class="h-rule" />
+        {{/if_and}}
         {{{description}}}
         <ul class="documents">
           {{#documents}}
@@ -122,6 +137,9 @@
  
       {{#asset "documentgroup" size="3"}}
         {{{title}}}
+        {{#if_and title_visible description_visible}}
+          <div class="h-rule" />
+        {{/if_and}}
         {{{description}}}
         <ul class="documents">
           {{#documents}}
@@ -176,16 +194,25 @@
 
         {{#asset "text" size="1"}}
           {{{title}}}
+          {{#if_and title_visible body_visible}}
+            <div class="h-rule" />
+          {{/if_and}}
           {{{body}}}
         {{/asset}}
 
         {{#asset "text" size="2"}}
           {{{title}}}
+          {{#if_and title_visible body_visible}}
+            <div class="h-rule" />
+          {{/if_and}}
           {{{body}}}
         {{/asset}}
 
         {{#asset "text" size="3"}}
           {{{title}}}
+          {{#if_and title_visible body_visible}}
+            <div class="h-rule" />
+          {{/if_and}}
           {{{body}}}
         {{/asset}}
 
@@ -218,6 +245,9 @@
     
         {{#asset "documentgroup" size="1"}}
           {{{title}}}
+          {{#if_and title_visible description_visible}}
+            <div class="h-rule" />
+          {{/if_and}}
           {{{description}}}
           <ul class="documents">
             {{#documents}}
@@ -230,6 +260,9 @@
    
         {{#asset "documentgroup" size="2"}}
           {{{title}}}
+          {{#if_and title_visible description_visible}}
+            <div class="h-rule" />
+          {{/if_and}}
           {{{description}}}
           <ul class="documents">
             {{#documents}}
@@ -242,6 +275,9 @@
    
         {{#asset "documentgroup" size="3"}}
           {{{title}}}
+          {{#if_and title_visible description_visible}}
+            <div class="h-rule" />
+          {{/if_and}}
           {{{description}}}
           <ul class="documents">
             {{#documents}}

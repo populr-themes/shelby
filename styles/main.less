@@ -33,10 +33,10 @@
 }
 
 .horiz-rule-color (@bgcolor) when (luma(@bgcolor) > 75%) {
-  border-bottom: 1px solid #aaa;
+  background-color: #888;
 }
 .horiz-rule-color (@bgcolor) when (luma(@bgcolor) =< 75%) {
-  border-bottom: 1px solid #fff;
+  background-color: #fff;
 }
 
 // Title text defaults
@@ -135,9 +135,7 @@
   .headline-text();
   p { .headline-text(); }
 
-  padding: 10px 0;
-  border-bottom: 1px solid #bbb;
-  #footer-region & { .horiz-rule-color(@custom-color); }
+  margin: 10px 0;
 }
 
 .description, .body {
@@ -311,6 +309,16 @@
 .lt-ie9 .documents li {
   display: block;
   float: left;
+}
+
+.h-rule {
+  display: block;
+  content: ' ';
+  width: 100%;
+  height: 1px;
+  margin: 10px 0;
+  #main-region & { background-color: #bbb; }
+  #footer-region & { .horiz-rule-color(@custom-color); }
 }
 
 // Region-specific styling
